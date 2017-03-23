@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XamarinAllianceApp.Controllers;
+using XamarinAllianceApp.Models;
 
 namespace XamarinAllianceApp.Views
 {
@@ -51,6 +52,17 @@ namespace XamarinAllianceApp.Views
         public async void OnSyncItems(object sender, EventArgs e)
         {
             await RefreshItems(true);
+        }
+        async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            var item = args.SelectedItem as Character;
+            if (item == null)
+                return;
+
+            await Navigation.PushAsync(new Taha(item));
+
+            // Manually deselect item
+            characterList.SelectedItem = null;
         }
 
         private async Task RefreshItems(bool showActivityIndicator)

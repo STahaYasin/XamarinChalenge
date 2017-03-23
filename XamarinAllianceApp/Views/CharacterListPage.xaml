@@ -21,6 +21,7 @@
     <ListView x:Name="characterList"
 				IsPullToRefreshEnabled="true" Refreshing="OnRefresh"
         HasUnevenRows="true"
+              ItemSelected="OnItemSelected"
 				Grid.Row="1">
       <ListView.ItemTemplate>
         <DataTemplate>
